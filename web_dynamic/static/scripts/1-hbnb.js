@@ -7,7 +7,7 @@ $(function () {
       delete amenities[$(this).data('id')];
     }
     let checkAmenities = Object.values(amenities);
-    if (checkAmenities.lenght > 0) {
+    if (checkAmenities.length > 0) {
       $('div.amenities > h4').text(Object.values(amenities).join(', '));
     } else {
       $('div.amenities > h4').html('&nbsp;')
