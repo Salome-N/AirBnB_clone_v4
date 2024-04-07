@@ -1,16 +1,12 @@
 $(function () {
-  const amenities = {};
-  $(document).on('change', 'input[type="checkbox"]', function () {
-    if (this.checked) {
-	    amenities[$(this).data('id')] = $(this).data('name');
-    } else {
-      delete amenities[$(this).data('id')];
-    }
-    let checkAmenities = Object.values(amenities);
-    if (checkAmenities.length > 0) {
-      $('div.amenities > h4').text(Object.values(amenities).join(', '));
-    } else {
-      $('div.amenities > h4').html('&nbsp;')
-    }
-  });
+    const amenities = {};
+    $('div.amenities li input').change(function () {
+	if($(this).is(':checked')){
+	    amenities[$(this).attr('data-name')] = $(this).attr('data-id');
+	} else if ($(this).is(':not(:checked)')) {
+	    delete amenities[$(this).attr('data-name')];
+	}
+	const names = Object.keys(amenities);
+	$('.amenities h4').html(names.sort().join(', '));
+    });
 });
